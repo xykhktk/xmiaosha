@@ -1,6 +1,7 @@
 package com.x.miaosha.controller;
 
 import com.x.miaosha.controller.viewobject.UserVO;
+import com.x.miaosha.response.CommonReturnType;
 import com.x.miaosha.service.impl.UserInfoServiceImpl;
 import com.x.miaosha.service.model.UserModel;
 import org.springframework.beans.BeanUtils;
@@ -19,12 +20,12 @@ public class UserInfo {
 
     @RequestMapping("/get")
     @ResponseBody
-    public UserVO getUserInfo(@RequestParam(name = "id") Integer id){
+    public CommonReturnType getUserInfo(@RequestParam(name = "id") Integer id){
 
         UserModel userModel =  userInfoService.getUserInfoById(id);
         UserVO userVO = new UserVO();
         BeanUtils.copyProperties(userModel,userVO);
-        return userVO;
+        return CommonReturnType.create(userVO);
     }
 
 }
