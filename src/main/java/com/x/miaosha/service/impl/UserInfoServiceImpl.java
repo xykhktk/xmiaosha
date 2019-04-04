@@ -55,6 +55,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 
 
         UserPasswordDO userPasswordDO = convertPasswordFromModel(userModel);
+        userPasswordDO.setUserInfoId(userInfoDO.getId());
         userPasswordDOMapper.insertSelective(userPasswordDO);
     }
 
