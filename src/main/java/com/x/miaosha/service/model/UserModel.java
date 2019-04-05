@@ -1,15 +1,27 @@
 package com.x.miaosha.service.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 //作者称这些model为 领域对象。这个对象是专门供service使用的
 public class UserModel {
 
     private Integer id;
+    @NotBlank(message = "用户名不能为空")
     private String name;
+    @NotNull(message = "必须填写性别")
     private Integer gender;
+    @NotNull(message = "必须填写年龄")
+    @Min(value = 0,message = "年龄必须大于0")
+    @Max(value = 150,message = "年龄不能大于150")
     private Integer age;
+    @NotBlank(message = "手机不能为空")
     private String telphone;
     private String registerMode;
     private String thirdPartyId;
+    @NotBlank(message = "密码不能为空")
     private String encrptPassword;
 
     public Integer getId() {

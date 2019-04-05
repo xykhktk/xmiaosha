@@ -50,4 +50,7 @@ public interface UserInfoDOMapper {
      * @mbg.generated Mon Apr 01 00:15:07 CST 2019
      */
     int updateByPrimaryKey(UserInfoDO record);
+
+    UserInfoDO selectByTelphone(String telphone);
+
 }

@@ -90,4 +90,19 @@ public class UserInfo extends BaseController{
         BeanUtils.copyProperties(userModel,userVO);
         return CommonReturnType.create(userVO);
     }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @ResponseBody
+    public CommonReturnType login(@RequestParam(name = "phone")String phone,
+        @RequestParam(name = "password")String password
+        ) throws BusinessException {
+
+        String passwordMd5 = DigestUtils.md5DigestAsHex(password.getBytes());
+        UserModel userModel = userInfoService.login(phone,passwordMd5);
+        httpServletRequest.getSession().setAttribute("userLonginInfo",userModel);
+
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(userModel,userVO);
+        return CommonReturnType.create(userVO);
+    }
 }
