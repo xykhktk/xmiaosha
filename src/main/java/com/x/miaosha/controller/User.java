@@ -19,7 +19,7 @@ import java.util.Random;
 
 @Controller("user")
 @RequestMapping("/user")
-public class UserInfo extends BaseController{
+public class User extends BaseController{
 
     @Autowired
     UserInfoServiceImpl userInfoService;
